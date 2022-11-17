@@ -1,7 +1,7 @@
 # imgui.tech
 No-code UI creating software for ImGui. Create an interface for your application with the convenience of Figma and the functionality of Photoshop.
 
-The project is developing quite slowly due to my busy schedule in real life, so I decided it was worth opening it up to opsorsors.
+The project is developing quite slowly due to my busy schedule in real life, so I decided it was worth opening it up to other developers.
 
 Social Media:
 [Telegram Channel](https://t.me/imguitech)
