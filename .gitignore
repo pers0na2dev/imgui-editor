@@ -30,3 +30,16 @@
 *.exe
 *.out
 *.app
+*.db-shm
+*.lock
+*.vsidx
+.vs/imgui-editor/v17/.suo
+*.db
+*.opendb
+*.db-wal
+*.recipe
+binary/imgui-editor.iobj
+*.ipdb
+*.log
+*.tlog
+*.pdb
