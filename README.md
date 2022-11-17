@@ -12,7 +12,8 @@ The project is developing quite slowly due to my busy schedule in real life, so 
 # 📦 codegen-cli compilation
     To generate c++ imgui code, you need to use the codegen-cli in this repository. 
 
-    To compile the application, install the latest version of the Golang compiler, open the "codegen-cli" folder in the terminal and write:
+    To compile the application, install the latest version of the Golang compiler, 
+    open the "codegen-cli" folder in the terminal and write:
 
         $ go run main.go ## to run without compiling.
         $ go build -o codegen.exe ## to build an .exe file.
