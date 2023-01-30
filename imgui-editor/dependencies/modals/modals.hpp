@@ -7,6 +7,7 @@
 #include "../imgui/imgui_tweaker.hpp"
 #include "../security/XorStr.hpp"
 
+#include <string>
 #include <functional>
 
 class modalManager {
