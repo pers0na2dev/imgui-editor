@@ -7,9 +7,11 @@ Social Media:
 [Telegram Channel](https://t.me/imguitech)
 
 # 🔩 editor compilation
-    Use the latest version of Visual Studio.
-    Install www.microsoft.com/en-us/download/details.aspx?id=6812
-    Run the project build in x86 Release with the C++20 version. 
+Use the latest version of Visual Studio.
+
+Install [DirectX SDK](www.microsoft.com/en-us/download/details.aspx?id=6812)
+
+Run the project build in x86 Release with the C++20 version. 
 
 
 # 📦 codegen-cli compilation
