@@ -3,8 +3,6 @@ No-code UI creating software for ImGui. Create an interface for your application
 
 The project is developing quite slowly due to my busy schedule in real life, so I decided it was worth opening it up to other developers.
 
-Social Media:
-[Telegram Channel](https://t.me/imguitech)
 
 # 🔩 editor compilation
 Use the latest version of Visual Studio.
