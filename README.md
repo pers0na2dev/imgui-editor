@@ -24,3 +24,7 @@ Run the project build in x86 Release with the C++20 version.
 # ✏️ pull request rules
     Please specify what exactly you have changed and what the point of the change is.
     Pull requests without this information are likely to be automatically rejected.
+   
+   
+   
+[![Star History Chart](https://api.star-history.com/svg?repos=pearleascent/imgui-editor&type=Timeline)](https://star-history.com/#pearleascent/imgui-editor&Timeline)
