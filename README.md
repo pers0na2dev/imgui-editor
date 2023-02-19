@@ -26,5 +26,5 @@ Run the project build in x86 Release with the C++20 version.
     Pull requests without this information are likely to be automatically rejected.
    
    
-   
-[![Star History Chart](https://api.star-history.com/svg?repos=pearleascent/imgui-editor&type=Timeline)](https://star-history.com/#pearleascent/imgui-editor&Timeline)
+
+[![Star History Chart](https://api.star-history.com/svg?repos=kaazedev/imgui-editor&type=Timeline)](https://star-history.com/#kaazedev/imgui-editor&Timeline)
