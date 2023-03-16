@@ -2,8 +2,8 @@
 
 #include <memory>
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include "dependencies/imgui/imgui.h"
+#include "dependencies/imgui/imgui_internal.h"
 
 #include "../../context.hpp"
 
