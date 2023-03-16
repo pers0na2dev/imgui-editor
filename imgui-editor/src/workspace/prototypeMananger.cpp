@@ -223,7 +223,7 @@ void RenderWidgetsList(std::vector<widgetPrototype>& prototypes, int padding, in
 
 		ImGui::PopID();
 
-		if (prototypes[id].type == elementType::CHILD || prototypes[id].type == elementType::GROUP) {
+		if (prototypes.size() > id && (prototypes[id].type == elementType::CHILD || prototypes[id].type == elementType::GROUP)) {
 			RenderWidgetsList(prototypes[id].items, padding + 1, counter + 100);
 		}
 	}
