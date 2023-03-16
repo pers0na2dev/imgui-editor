@@ -8,9 +8,9 @@
 #include "../../interface/elements.hpp"
 #include "../../projects/projectSystem.hpp"
 
-#include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/security/XorStr.hpp"
-#include "../../dependencies/console/console.hpp"
+#include "dependencies/assets/hashes.h"
+#include "dependencies/security/XorStr.hpp"
+#include "dependencies/console/console.hpp"
 
 bool Checkbox(const char* label, bool* v)
 {
