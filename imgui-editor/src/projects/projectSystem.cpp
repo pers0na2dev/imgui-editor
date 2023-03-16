@@ -3,7 +3,6 @@
 #include "../projects/projectSystem.hpp"
 
 #include "../../dependencies/console/console.hpp"
-#include "../../dependencies/security/XorStr.hpp"
 #include "../prototypeSystem/prototypeSystem.hpp"
 
 template <class T>
@@ -89,27 +88,27 @@ void projectSystem::JSONLayer(nlohmann::json& json, std::vector<layerStruct>& la
 	{
 		for (auto a = 0; a < layer.size(); a++)
 		{
-			JSON(json[a], _S("Target"), layer[a].target, save);
-			JSON(json[a], _S("Type"), layer[a].type, save);
-			JSON(json[a], _S("Pos"), layer[a].pos, save);
-			JSON(json[a], _S("Size"), layer[a].size, save);
-			JSON(json[a], _S("Color"), layer[a].color, save);
-			JSON(json[a], _S("Thickness"), layer[a].thickness, save);
-			JSON(json[a], _S("Rounding"), layer[a].rounding, save);
-			JSON(json[a], _S("Radius"), layer[a].radius, save);
-			JSON(json[a], _S("RoundFlags"), layer[a].roundFlags, save);
-			JSON(json[a], _S("TextValue"), layer[a].textValue, save);
-			JSON(json[a], _S("FontName"), layer[a].fontName, save);
-			JSON(json[a], _S("FontFile"), layer[a].fontFile, save);
-			JSON(json[a], _S("FontSize"), layer[a].fontSize, save);
-			JSON(json[a], _S("TextAlignX"), layer[a].textAlignX, save);
-			JSON(json[a], _S("TextAlignY"), layer[a].textAlignY, save);
-			JSON(json[a], _S("TextSize"), layer[a].textSize, save);
-			JSON(json[a], _S("ImagePath"), layer[a].imagePath, save);
-			JSON(json[a], _S("ImageName"), layer[a].imageName, save);
+			JSON(json[a], "Target", layer[a].target, save);
+			JSON(json[a], "Type", layer[a].type, save);
+			JSON(json[a], "Pos", layer[a].pos, save);
+			JSON(json[a], "Size", layer[a].size, save);
+			JSON(json[a], "Color", layer[a].color, save);
+			JSON(json[a], "Thickness", layer[a].thickness, save);
+			JSON(json[a], "Rounding", layer[a].rounding, save);
+			JSON(json[a], "Radius", layer[a].radius, save);
+			JSON(json[a], "RoundFlags", layer[a].roundFlags, save);
+			JSON(json[a], "TextValue", layer[a].textValue, save);
+			JSON(json[a], "FontName", layer[a].fontName, save);
+			JSON(json[a], "FontFile", layer[a].fontFile, save);
+			JSON(json[a], "FontSize", layer[a].fontSize, save);
+			JSON(json[a], "TextAlignX", layer[a].textAlignX, save);
+			JSON(json[a], "TextAlignY", layer[a].textAlignY, save);
+			JSON(json[a], "TextSize", layer[a].textSize, save);
+			JSON(json[a], "ImagePath", layer[a].imagePath, save);
+			JSON(json[a], "ImageName", layer[a].imageName, save);
 
-			JSON(json[a], _S("_locked"), layer[a]._locked, save);
-			JSON(json[a], _S("_show"), layer[a]._show, save);
+			JSON(json[a], "_locked", layer[a]._locked, save);
+			JSON(json[a], "_show", layer[a]._show, save);
 		}
 	}
 	else {
@@ -122,71 +121,71 @@ void projectSystem::JSONLayer(nlohmann::json& json, std::vector<layerStruct>& la
 
 			layerStr._shouldRebuild = true;
 
-			if(!json[a][_S("_locked")].is_null())
-				layerStr._locked = json[a][_S("_locked")].get<bool>();
+			if(!json[a]["_locked"].is_null())
+				layerStr._locked = json[a]["_locked"].get<bool>();
 
-			if (!json[a][_S("_show")].is_null())
-				layerStr._show = json[a][_S("_show")].get<bool>();
+			if (!json[a]["_show"].is_null())
+				layerStr._show = json[a]["_show"].get<bool>();
 
-			if (!json[a][_S("Radius")].is_null())
-				layerStr.radius = json[a][_S("Radius")].get<float>();
+			if (!json[a]["Radius"].is_null())
+				layerStr.radius = json[a]["Radius"].get<float>();
 
-			if (!json[a][_S("Target")].is_null())
-				layerStr.target = json[a][_S("Target")].get<drawTarget>();
+			if (!json[a]["Target"].is_null())
+				layerStr.target = json[a]["Target"].get<drawTarget>();
 
-			if (!json[a][_S("Type")].is_null())
-				layerStr.type = json[a][_S("Type")].get<drawType>();
+			if (!json[a]["Type"].is_null())
+				layerStr.type = json[a]["Type"].get<drawType>();
 
-			if (!json[a][_S("Pos")].is_null())
-				layerStr.pos.x = json[a][_S("Pos")][0].get<float>(),
-				layerStr.pos.y = json[a][_S("Pos")][1].get<float>();
+			if (!json[a]["Pos"].is_null())
+				layerStr.pos.x = json[a]["Pos"][0].get<float>(),
+				layerStr.pos.y = json[a]["Pos"][1].get<float>();
 
-			if (!json[a][_S("Size")].is_null())
-				layerStr.size.x = json[a][_S("Size")][0].get<float>(),
-				layerStr.size.y = json[a][_S("Size")][1].get<float>();
+			if (!json[a]["Size"].is_null())
+				layerStr.size.x = json[a]["Size"][0].get<float>(),
+				layerStr.size.y = json[a]["Size"][1].get<float>();
 
-			if (!json[a][_S("Color")].is_null())
-				layerStr.color.Value.x = json[a][_S("Color")][0].get<float>(),
-				layerStr.color.Value.y = json[a][_S("Color")][1].get<float>(),
-				layerStr.color.Value.z = json[a][_S("Color")][2].get<float>(),
-				layerStr.color.Value.w = json[a][_S("Color")][3].get<float>();
+			if (!json[a]["Color"].is_null())
+				layerStr.color.Value.x = json[a]["Color"][0].get<float>(),
+				layerStr.color.Value.y = json[a]["Color"][1].get<float>(),
+				layerStr.color.Value.z = json[a]["Color"][2].get<float>(),
+				layerStr.color.Value.w = json[a]["Color"][3].get<float>();
 
-			if (!json[a][_S("Thickness")].is_null())
-				layerStr.thickness = json[a][_S("Thickness")].get<float>();
+			if (!json[a]["Thickness"].is_null())
+				layerStr.thickness = json[a]["Thickness"].get<float>();
 
-			if (!json[a][_S("Rounding")].is_null())
-				layerStr.rounding = json[a][_S("Rounding")].get<float>();
+			if (!json[a]["Rounding"].is_null())
+				layerStr.rounding = json[a]["Rounding"].get<float>();
 
-			if (!json[a][_S("RoundFlags")].is_null())
-				layerStr.roundFlags = json[a][_S("RoundFlags")].get<ImDrawCornerFlags>();
+			if (!json[a]["RoundFlags"].is_null())
+				layerStr.roundFlags = json[a]["RoundFlags"].get<ImDrawCornerFlags>();
 
-			if (!json[a][_S("TextValue")].is_null())
-				layerStr.textValue = json[a][_S("TextValue")].get<std::string>();
+			if (!json[a]["TextValue"].is_null())
+				layerStr.textValue = json[a]["TextValue"].get<std::string>();
 
-			if (!json[a][_S("FontName")].is_null())
-				layerStr.fontName = json[a][_S("FontName")].get<std::string>();
+			if (!json[a]["FontName"].is_null())
+				layerStr.fontName = json[a]["FontName"].get<std::string>();
 
-			if (!json[a][_S("FontFile")].is_null())
-				layerStr.fontFile = json[a][_S("FontFile")].get<std::string>();
+			if (!json[a]["FontFile"].is_null())
+				layerStr.fontFile = json[a]["FontFile"].get<std::string>();
 
-			if (!json[a][_S("FontSize")].is_null())
-				layerStr.fontSize = json[a][_S("FontSize")].get<float>();
+			if (!json[a]["FontSize"].is_null())
+				layerStr.fontSize = json[a]["FontSize"].get<float>();
 
-			if (!json[a][_S("TextAlignX")].is_null())
-				layerStr.textAlignX = json[a][_S("TextAlignX")].get<int>();
+			if (!json[a]["TextAlignX"].is_null())
+				layerStr.textAlignX = json[a]["TextAlignX"].get<int>();
 
-			if (!json[a][_S("TextAlignY")].is_null())
-				layerStr.textAlignY = json[a][_S("TextAlignY")].get<int>();
+			if (!json[a]["TextAlignY"].is_null())
+				layerStr.textAlignY = json[a]["TextAlignY"].get<int>();
 
-			if (!json[a][_S("TextSize")].is_null())
-				layerStr.textSize[0] = json[a][_S("TextSize")][0].get<float>(),
-				layerStr.textSize[1] = json[a][_S("TextSize")][1].get<float>();
+			if (!json[a]["TextSize"].is_null())
+				layerStr.textSize[0] = json[a]["TextSize"][0].get<float>(),
+				layerStr.textSize[1] = json[a]["TextSize"][1].get<float>();
 
-			if (!json[a][_S("ImagePath")].is_null())
-				layerStr.imagePath = escaped(json[a][_S("ImagePath")].get<std::string>());
+			if (!json[a]["ImagePath"].is_null())
+				layerStr.imagePath = escaped(json[a]["ImagePath"].get<std::string>());
 
-			if (!json[a][_S("ImageName")].is_null())
-				layerStr.imageName = json[a][_S("ImageName")].get<std::string>();
+			if (!json[a]["ImageName"].is_null())
+				layerStr.imageName = json[a]["ImageName"].get<std::string>();
 
 			layer.push_back(layerStr);
 
@@ -220,20 +219,20 @@ void Prototyping(nlohmann::json& input, std::vector<widgetPrototype>& prototypes
 		{
 			widgetPrototype proto = widgetPrototype{};
 
-			if (!input[a][_S("Type")].is_null()) proto.type = input[a][_S("Type")].get<elementType>();
-			if (!input[a][_S("Name")].is_null()) proto.name = input[a][_S("Name")].get<std::string>();
-			if (!input[a][_S("CursorPos")].is_null()) {
-				proto.cursorPos[0] = input[a][_S("CursorPos")][0] .get<float>();
-				proto.cursorPos[1] = input[a][_S("CursorPos")][1].get<float>();
+			if (!input[a]["Type"].is_null()) proto.type = input[a]["Type"].get<elementType>();
+			if (!input[a]["Name"].is_null()) proto.name = input[a]["Name"].get<std::string>();
+			if (!input[a]["CursorPos"].is_null()) {
+				proto.cursorPos[0] = input[a]["CursorPos"][0] .get<float>();
+				proto.cursorPos[1] = input[a]["CursorPos"][1].get<float>();
 			}
-			if (!input[a][_S("Width")].is_null()) proto.fWidth = input[a][_S("Width")].get<float>();
-			if (!input[a][_S("BtnSize")].is_null()) {
-				proto.btnSize[0] = input[a][_S("BtnSize")][0].get<float>();
-				proto.btnSize[1] = input[a][_S("BtnSize")][1].get<float>();
+			if (!input[a]["Width"].is_null()) proto.fWidth = input[a]["Width"].get<float>();
+			if (!input[a]["BtnSize"].is_null()) {
+				proto.btnSize[0] = input[a]["BtnSize"][0].get<float>();
+				proto.btnSize[1] = input[a]["BtnSize"][1].get<float>();
 			}
-			if (!input[a][_S("ChildSize")].is_null()) {
-				proto.childSize[0] = input[a][_S("ChildSize")][0].get<float>();
-				proto.childSize[1] = input[a][_S("ChildSize")][1].get<float>();
+			if (!input[a]["ChildSize"].is_null()) {
+				proto.childSize[0] = input[a]["ChildSize"][0].get<float>();
+				proto.childSize[1] = input[a]["ChildSize"][1].get<float>();
 			}
 
 			if (proto.type == elementType::CHILD || proto.type == elementType::GROUP) {
@@ -249,56 +248,56 @@ void projectSystem::Action(nlohmann::json& input, bool save)
 {
 	if (!save) gProjectSystem->data.layers.clear();
 
-	JSON(input[_S("Window")], _S("Alpha"), data.window.Alpha, save);
-	JSON(input[_S("Window")], _S("DisabledAlpha"), data.window.DisabledAlpha, save);
-	JSON(input[_S("Window")], _S("WindowRounding"), data.window.WindowRounding, save);
-	JSON(input[_S("Window")], _S("WindowBorderSize"), data.window.WindowBorderSize, save);
-	JSON(input[_S("Window")], _S("ChildRounding"), data.window.ChildRounding, save);
-	JSON(input[_S("Window")], _S("ChildBorderSize"), data.window.ChildBorderSize, save);
-	JSON(input[_S("Window")], _S("PopupRounding"), data.window.PopupRounding, save);
-	JSON(input[_S("Window")], _S("PopupBorderSize"), data.window.PopupBorderSize, save);
-	JSON(input[_S("Window")], _S("FrameRounding"), data.window.FrameRounding, save);
-	JSON(input[_S("Window")], _S("FrameBorderSize"), data.window.FrameBorderSize, save);
-	JSON(input[_S("Window")], _S("IndentSpacing"), data.window.IndentSpacing, save);
-	JSON(input[_S("Window")], _S("WindowMinSize"), data.window.WindowMinSize, save);
-	JSON(input[_S("Window")], _S("WindowPadding"), data.window.WindowPadding, save);
-	JSON(input[_S("Window")], _S("WindowSize"), data.window.WindowSize, save);
-	JSON(input[_S("Window")], _S("WindowTitleAlign"), data.window.WindowTitleAlign, save);
-	JSON(input[_S("Window")], _S("ItemSpacing"), data.window.ItemSpacing, save);
-	JSON(input[_S("Window")], _S("ItemInnerSpacing"), data.window.ItemInnerSpacing, save);
-	JSON(input[_S("Window")], _S("FramePadding"), data.window.FramePadding, save);
-	JSON(input[_S("Window")], _S("Size"), data.window.WindowSize, save);
+	JSON(input["Window"], "Alpha", data.window.Alpha, save);
+	JSON(input["Window"], "DisabledAlpha", data.window.DisabledAlpha, save);
+	JSON(input["Window"], "WindowRounding", data.window.WindowRounding, save);
+	JSON(input["Window"], "WindowBorderSize", data.window.WindowBorderSize, save);
+	JSON(input["Window"], "ChildRounding", data.window.ChildRounding, save);
+	JSON(input["Window"], "ChildBorderSize", data.window.ChildBorderSize, save);
+	JSON(input["Window"], "PopupRounding", data.window.PopupRounding, save);
+	JSON(input["Window"], "PopupBorderSize", data.window.PopupBorderSize, save);
+	JSON(input["Window"], "FrameRounding", data.window.FrameRounding, save);
+	JSON(input["Window"], "FrameBorderSize", data.window.FrameBorderSize, save);
+	JSON(input["Window"], "IndentSpacing", data.window.IndentSpacing, save);
+	JSON(input["Window"], "WindowMinSize", data.window.WindowMinSize, save);
+	JSON(input["Window"], "WindowPadding", data.window.WindowPadding, save);
+	JSON(input["Window"], "WindowSize", data.window.WindowSize, save);
+	JSON(input["Window"], "WindowTitleAlign", data.window.WindowTitleAlign, save);
+	JSON(input["Window"], "ItemSpacing", data.window.ItemSpacing, save);
+	JSON(input["Window"], "ItemInnerSpacing", data.window.ItemInnerSpacing, save);
+	JSON(input["Window"], "FramePadding", data.window.FramePadding, save);
+	JSON(input["Window"], "Size", data.window.WindowSize, save);
 
-	JSON(input[_S("Checkbox")], _S("FramePos"), data.checkbox.FramePos, save);
-	JSON(input[_S("Checkbox")], _S("FrameSize"), data.checkbox.FrameSize, save);
-	JSON(input[_S("Checkbox")], _S("TotalSize"), data.checkbox.TotalSize, save);
+	JSON(input["Checkbox"], "FramePos", data.checkbox.FramePos, save);
+	JSON(input["Checkbox"], "FrameSize", data.checkbox.FrameSize, save);
+	JSON(input["Checkbox"], "TotalSize", data.checkbox.TotalSize, save);
 
-	JSONLayer(input[_S("Layers")], data.layers, save);
+	JSONLayer(input["Layers"], data.layers, save);
 
-	Prototyping(input[_S("Prototyping")], gPrototypeSystem->prototypes, save);
+	Prototyping(input["Prototyping"], gPrototypeSystem->prototypes, save);
 }
 
 void projectSystem::ActionTransform(nlohmann::json& input, currentProjectData& data)
 {
-	JSON(input[_S("Window")], _S("Alpha"), data.window.Alpha, false);
-	JSON(input[_S("Window")], _S("DisabledAlpha"), data.window.DisabledAlpha, false);
-	JSON(input[_S("Window")], _S("WindowRounding"), data.window.WindowRounding, false);
-	JSON(input[_S("Window")], _S("WindowBorderSize"), data.window.WindowBorderSize, false);
-	JSON(input[_S("Window")], _S("ChildRounding"), data.window.ChildRounding, false);
-	JSON(input[_S("Window")], _S("ChildBorderSize"), data.window.ChildBorderSize, false);
-	JSON(input[_S("Window")], _S("PopupRounding"), data.window.PopupRounding, false);
-	JSON(input[_S("Window")], _S("PopupBorderSize"), data.window.PopupBorderSize, false);
-	JSON(input[_S("Window")], _S("FrameRounding"), data.window.FrameRounding, false);
-	JSON(input[_S("Window")], _S("FrameBorderSize"), data.window.FrameBorderSize, false);
-	JSON(input[_S("Window")], _S("IndentSpacing"), data.window.IndentSpacing, false);
-	JSON(input[_S("Window")], _S("WindowMinSize"), data.window.WindowMinSize, false);
-	JSON(input[_S("Window")], _S("WindowPadding"), data.window.WindowPadding, false);
-	JSON(input[_S("Window")], _S("WindowSize"), data.window.WindowSize, false);
-	JSON(input[_S("Window")], _S("WindowTitleAlign"), data.window.WindowTitleAlign, false);
-	JSON(input[_S("Window")], _S("ItemSpacing"), data.window.ItemSpacing, false);
-	JSON(input[_S("Window")], _S("ItemInnerSpacing"), data.window.ItemInnerSpacing, false);
-	JSON(input[_S("Window")], _S("FramePadding"), data.window.FramePadding, false);
-	JSON(input[_S("Window")], _S("Size"), data.window.WindowSize, false);
+	JSON(input["Window"], "Alpha", data.window.Alpha, false);
+	JSON(input["Window"], "DisabledAlpha", data.window.DisabledAlpha, false);
+	JSON(input["Window"], "WindowRounding", data.window.WindowRounding, false);
+	JSON(input["Window"], "WindowBorderSize", data.window.WindowBorderSize, false);
+	JSON(input["Window"], "ChildRounding", data.window.ChildRounding, false);
+	JSON(input["Window"], "ChildBorderSize", data.window.ChildBorderSize, false);
+	JSON(input["Window"], "PopupRounding", data.window.PopupRounding, false);
+	JSON(input["Window"], "PopupBorderSize", data.window.PopupBorderSize, false);
+	JSON(input["Window"], "FrameRounding", data.window.FrameRounding, false);
+	JSON(input["Window"], "FrameBorderSize", data.window.FrameBorderSize, false);
+	JSON(input["Window"], "IndentSpacing", data.window.IndentSpacing, false);
+	JSON(input["Window"], "WindowMinSize", data.window.WindowMinSize, false);
+	JSON(input["Window"], "WindowPadding", data.window.WindowPadding, false);
+	JSON(input["Window"], "WindowSize", data.window.WindowSize, false);
+	JSON(input["Window"], "WindowTitleAlign", data.window.WindowTitleAlign, false);
+	JSON(input["Window"], "ItemSpacing", data.window.ItemSpacing, false);
+	JSON(input["Window"], "ItemInnerSpacing", data.window.ItemInnerSpacing, false);
+	JSON(input["Window"], "FramePadding", data.window.FramePadding, false);
+	JSON(input["Window"], "Size", data.window.WindowSize, false);
 
-	JSONLayer(input[_S("Layers")], data.layers, false);
+	JSONLayer(input["Layers"], data.layers, false);
 }

@@ -9,7 +9,6 @@
 #include "../projects/projectSystem.hpp"
 
 #include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/security/XorStr.hpp"
 #include "../../dependencies/console/console.hpp"
 
 void WindowSettings::Render()
@@ -21,7 +20,7 @@ void WindowSettings::Render()
 
 	utils::PushSettings();
 
-	ImGui::Begin(_S("BaseWindow"), 0, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+	ImGui::Begin("BaseWindow", 0, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
 	{
 		auto pos = ImGui::GetWindowPos();
 		auto draw = ImGui::GetWindowDrawList();
@@ -58,19 +57,19 @@ void WindowSettings::Infobar()
 		float zoom = gContext.WindowScale * 100.f;
 
 		ImGui::SetCursorPos({ 5, 5 });
-		if (elements::InvisibleInputFloat(_S("Zoom:"), _S("search"), zoom, "%0.f%%")) {
+		if (elements::InvisibleInputFloat("Zoom:", "search", zoom, "%0.f%%")) {
 			zoom = std::clamp(zoom, 25.f, 1000.f);
-			ImGui::FindWindowByName(_S("BaseWindow"))->FontWindowScale = zoom / 100.f;
+			ImGui::FindWindowByName("BaseWindow")->FontWindowScale = zoom / 100.f;
 		}
 
 		ImGui::SetCursorPos({ 110, 5 });
-		elements::InvisibleInputFloat(_S("Width:"), _S("second"), gProjectSystem->data.window.WindowSize.x, "%0.fpx");
+		elements::InvisibleInputFloat("Width:", "second", gProjectSystem->data.window.WindowSize.x, "%0.fpx");
 
 		ImGui::SetCursorPos({ 215, 5 });
-		elements::InvisibleInputFloat(_S("Height:"), _S("third"), gProjectSystem->data.window.WindowSize.y, "%0.fpx");
+		elements::InvisibleInputFloat("Height:", "third", gProjectSystem->data.window.WindowSize.y, "%0.fpx");
 
 		ImGui::SetCursorPos({ ImGui::GetIO().DisplaySize.x - 100, 5 });
-		if (elements::Save(_S("Save")))
+		if (elements::Save("Save"))
 			gFileSystem->SaveProject();
 	}
 
@@ -99,40 +98,40 @@ void WindowSettings::Mainbar()
 	}
 	if (gContext.SelectedTab == 1) 
 	{
-		elements::Child(_S("Alpha"), { 286, 110 }, [&]() {
-			ImGui::SliderFloat(_S("Alpha"), &gProjectSystem->data.window.Alpha, 0.f, 1.f, _S("%.02f"));
-			ImGui::SliderFloat(_S("Disabled"), &gProjectSystem->data.window.DisabledAlpha, 0.f, 1.f, _S("%.02f"));
+		elements::Child("Alpha", { 286, 110 }, [&]() {
+			ImGui::SliderFloat("Alpha", &gProjectSystem->data.window.Alpha, 0.f, 1.f, "%.02f");
+			ImGui::SliderFloat("Disabled", &gProjectSystem->data.window.DisabledAlpha, 0.f, 1.f, "%.02f");
 		});
-		elements::Child(_S("Window"), { 286, 370 }, [&]() {
-			ImGui::SliderFloat(_S("Rounding"), &gProjectSystem->data.window.WindowRounding, 0.f, 24, _S("%.0fpx"));
-			ImGui::SliderFloat(_S("Border Size"), &gProjectSystem->data.window.WindowBorderSize, 0.f, 5.f, _S("%.0fpx"));
+		elements::Child("Window", { 286, 370 }, [&]() {
+			ImGui::SliderFloat("Rounding", &gProjectSystem->data.window.WindowRounding, 0.f, 24, "%.0fpx");
+			ImGui::SliderFloat("Border Size", &gProjectSystem->data.window.WindowBorderSize, 0.f, 5.f, "%.0fpx");
 			ImGui::PushItemWidth(276);
-			ImGui::InputFloat(_S("Minimal Size X"), &gProjectSystem->data.window.WindowMinSize.x, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Minimal Size Y"), &gProjectSystem->data.window.WindowMinSize.y, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Padding X"), &gProjectSystem->data.window.WindowPadding.x, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Padding Y"), &gProjectSystem->data.window.WindowPadding.y, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Title Align X"), &gProjectSystem->data.window.WindowTitleAlign.x, 0, 0, _S("%.02fpx"));
-			ImGui::InputFloat(_S("Title Align Y"), &gProjectSystem->data.window.WindowTitleAlign.y, 0, 0, _S("%.02fpx"));
+			ImGui::InputFloat("Minimal Size X", &gProjectSystem->data.window.WindowMinSize.x, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Minimal Size Y", &gProjectSystem->data.window.WindowMinSize.y, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Padding X", &gProjectSystem->data.window.WindowPadding.x, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Padding Y", &gProjectSystem->data.window.WindowPadding.y, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Title Align X", &gProjectSystem->data.window.WindowTitleAlign.x, 0, 0, "%.02fpx");
+			ImGui::InputFloat("Title Align Y", &gProjectSystem->data.window.WindowTitleAlign.y, 0, 0, "%.02fpx");
 		});
-		elements::Child(_S("Child"), { 286, 110 }, []() {
-			ImGui::SliderFloat(_S("Rounding"), &gProjectSystem->data.window.ChildRounding, 0.f, 24, _S("%.0fpx"));
-			ImGui::SliderFloat(_S("Border Size"), &gProjectSystem->data.window.ChildBorderSize, 0.f, 5.f, _S("%.0fpx"));
+		elements::Child("Child", { 286, 110 }, []() {
+			ImGui::SliderFloat("Rounding", &gProjectSystem->data.window.ChildRounding, 0.f, 24, "%.0fpx");
+			ImGui::SliderFloat("Border Size", &gProjectSystem->data.window.ChildBorderSize, 0.f, 5.f, "%.0fpx");
 		});
-		elements::Child(_S("Popup"), { 286, 110 }, []() {
-			ImGui::SliderFloat(_S("Rounding"), &gProjectSystem->data.window.PopupRounding, 0.f, 24, _S("%.0fpx"));
-			ImGui::SliderFloat(_S("Border Size"), &gProjectSystem->data.window.PopupBorderSize, 0.f, 5.f, _S("%.0fpx"));
+		elements::Child("Popup", { 286, 110 }, []() {
+			ImGui::SliderFloat("Rounding", &gProjectSystem->data.window.PopupRounding, 0.f, 24, "%.0fpx");
+			ImGui::SliderFloat("Border Size", &gProjectSystem->data.window.PopupBorderSize, 0.f, 5.f, "%.0fpx");
 		});
-		elements::Child(_S("Widget"), { 286, 410 }, []() {
-			ImGui::SliderFloat(_S("Frame Round"), &gProjectSystem->data.window.FrameRounding, 0.f, 24, _S("%.0fpx"));
-			ImGui::SliderFloat(_S("Frame Border"), &gProjectSystem->data.window.FrameBorderSize, 0.f, 5.f, _S("%.0fpx"));
-			ImGui::SliderFloat(_S("Indent Size"), &gProjectSystem->data.window.IndentSpacing, 0.f, 5.f, _S("%.0fpx"));
+		elements::Child("Widget", { 286, 410 }, []() {
+			ImGui::SliderFloat("Frame Round", &gProjectSystem->data.window.FrameRounding, 0.f, 24, "%.0fpx");
+			ImGui::SliderFloat("Frame Border", &gProjectSystem->data.window.FrameBorderSize, 0.f, 5.f, "%.0fpx");
+			ImGui::SliderFloat("Indent Size", &gProjectSystem->data.window.IndentSpacing, 0.f, 5.f, "%.0fpx");
 			ImGui::PushItemWidth(276);
-			ImGui::InputFloat(_S("Item Inner Spacing X"), &gProjectSystem->data.window.ItemInnerSpacing.x, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Item Inner Spacing Y"), &gProjectSystem->data.window.ItemInnerSpacing.y, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Item Spacing X"), &gProjectSystem->data.window.ItemSpacing.x, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Item Spacing Y"), &gProjectSystem->data.window.ItemSpacing.y, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Frame Padding X"), &gProjectSystem->data.window.FramePadding.x, 0, 0, _S("%.0fpx"));
-			ImGui::InputFloat(_S("Frame Padding Y"), &gProjectSystem->data.window.FramePadding.y, 0, 0, _S("%.0fpx"));
+			ImGui::InputFloat("Item Inner Spacing X", &gProjectSystem->data.window.ItemInnerSpacing.x, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Item Inner Spacing Y", &gProjectSystem->data.window.ItemInnerSpacing.y, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Item Spacing X", &gProjectSystem->data.window.ItemSpacing.x, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Item Spacing Y", &gProjectSystem->data.window.ItemSpacing.y, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Frame Padding X", &gProjectSystem->data.window.FramePadding.x, 0, 0, "%.0fpx");
+			ImGui::InputFloat("Frame Padding Y", &gProjectSystem->data.window.FramePadding.y, 0, 0, "%.0fpx");
 		});
 
 		ImGui::NewLine();

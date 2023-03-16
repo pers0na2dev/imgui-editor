@@ -95,7 +95,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="dependencies\md5\md5.cpp" />
     <ClCompile Include="src\filesystem\filesystem.cpp" />
     <ClCompile Include="dependencies\console\console.cpp" />
     <ClCompile Include="dependencies\imgui\imgui.cpp" />
@@ -123,7 +122,6 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="defines.h" />
-    <ClInclude Include="dependencies\md5\md5.hpp" />
     <ClInclude Include="src\context.hpp" />
     <ClInclude Include="src\history\history.hpp" />
     <ClInclude Include="src\interface\transformDrawlist.hpp" />
@@ -144,8 +142,6 @@
     <ClInclude Include="dependencies\imgui\imstb_truetype.h" />
     <ClInclude Include="dependencies\json\json.hpp" />
     <ClInclude Include="dependencies\json\json_fwd.hpp" />
-    <ClInclude Include="dependencies\security\FNV1A.hpp" />
-    <ClInclude Include="dependencies\security\XorStr.hpp" />
     <ClInclude Include="entry.hpp" />
     <ClInclude Include="src\installer\installerSystem.hpp" />
     <ClInclude Include="src\interface\elements.hpp" />

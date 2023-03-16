@@ -815,8 +815,6 @@ CODE
 #define _CRT_SECURE_NO_WARNINGS
 #endif
 
-#include "../security/XorStr.hpp"
-
 #include "imgui.h"
 #ifndef IMGUI_DISABLE
 
@@ -4132,7 +4130,7 @@ void ImGui::UpdateMouseWheel()
 
     // Zoom / Scale window
     // FIXME-OBSOLETE: This is an old feature, it still works but pretty much nobody is using it and may be best redesigned.
-    if (wheel_y != 0.0f && g.IO.KeyCtrl && strstr(window->Name, _S("BaseWindow")))
+    if (wheel_y != 0.0f && g.IO.KeyCtrl && strstr(window->Name, "BaseWindow"))
     {
         StartLockWheelingWindow(window);
         const float new_font_scale = ImClamp(window->FontWindowScale + g.IO.MouseWheel * 0.25f, 0.50f, 10.00f);

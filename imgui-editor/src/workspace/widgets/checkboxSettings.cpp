@@ -9,7 +9,6 @@
 #include "../../projects/projectSystem.hpp"
 
 #include "dependencies/assets/hashes.h"
-#include "dependencies/security/XorStr.hpp"
 #include "dependencies/console/console.hpp"
 
 bool Checkbox(const char* label, bool* v)
@@ -62,7 +61,7 @@ void CheckboxSettings::Render()
 
 	utils::PushWidgetSettings();
 
-	ImGui::Begin(_S("BaseWindow"), 0, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+	ImGui::Begin("BaseWindow", 0, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
 	{
 		auto pos = ImGui::GetWindowPos();
 		auto draw = ImGui::GetWindowDrawList();
@@ -76,7 +75,7 @@ void CheckboxSettings::Render()
 		ImGui::GetCurrentWindow()->FontWindowScale = round(ImGui::GetCurrentWindow()->FontWindowScale * 10000) / 10000;
 		gContext.WindowScale = round(ImGui::GetCurrentWindow()->FontWindowScale * 10000) / 10000;
 
-		Checkbox(_S("Checkbox"), &gContext.CheckboxState);
+		Checkbox("Checkbox", &gContext.CheckboxState);
 
 		layerManagement->Resize(gContext.SelectedLayer);
 		layerManagement->Select(gContext.SelectedLayer);
@@ -106,13 +105,13 @@ void CheckboxSettings::Infobar()
 		float zoom = gContext.WindowScale * 100.f;
 
 		ImGui::SetCursorPos({ 5, 5 });
-		if (elements::InvisibleInputFloat(_S("Zoom:"), _S("search"), zoom, "%0.f%%")) {
+		if (elements::InvisibleInputFloat("Zoom:", "search", zoom, "%0.f%%")) {
 			zoom = std::clamp(zoom, 25.f, 1000.f);
-			ImGui::FindWindowByName(_S("BaseWindow"))->FontWindowScale = zoom / 100.f;
+			ImGui::FindWindowByName("BaseWindow")->FontWindowScale = zoom / 100.f;
 		}
 
 		ImGui::SetCursorPos({ ImGui::GetIO().DisplaySize.x - 100, 5 });
-		if (elements::Save(_S("Save")))
+		if (elements::Save("Save"))
 			gFileSystem->SaveProject();
 
 		ImGui::SetCursorPos({ 110, 5 });
@@ -134,8 +133,8 @@ void CheckboxSettings::Sidebar()
 
 		elements::Child("Widget Selection", { 260, 95 }, [&]() {
 			ImGui::PushItemWidth(250);
-			ImGui::Combo(_S("Widget"), &gContext.SelectedWidget, { "Checkbox" }, 1);
-			ImGui::Checkbox(_S("Checkbox State"), &gContext.CheckboxState);
+			ImGui::Combo("Widget", &gContext.SelectedWidget, { "Checkbox" }, 1);
+			ImGui::Checkbox("Checkbox State", &gContext.CheckboxState);
 		});
 
 		elements::Child("Total Size (total_bb)", { 260, 113 }, [&]() {
@@ -180,12 +179,12 @@ void CheckboxSettings::Sidebar()
 			}
 		});
 
-		elements::Child(_S("Label"), { 260, 405 }, [&]() {
+		elements::Child("Label", { 260, 405 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Position X"), &gProjectSystem->data.checkbox.LabelPos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Position Y"), &gProjectSystem->data.checkbox.LabelPos.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Position X", &gProjectSystem->data.checkbox.LabelPos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Position Y", &gProjectSystem->data.checkbox.LabelPos.y, 0.f, 0.f, "%0.f");
 
-			if (ImGui::BeginCombo(_S("Font"), gProjectSystem->data.checkbox.FontName.c_str())) {
+			if (ImGui::BeginCombo("Font", gProjectSystem->data.checkbox.FontName.c_str())) {
 				for (auto item : gLayerSystem->systemFonts) {
 					if (ImGui::Selectable(item.name.c_str(), item.name == gProjectSystem->data.checkbox.FontName)) {
 						gProjectSystem->data.checkbox.FontName = item.name;
@@ -196,7 +195,7 @@ void CheckboxSettings::Sidebar()
 				}
 				ImGui::EndCombo();
 			}
-			if (elements::SliderFloat(_S("Text Size"), &gProjectSystem->data.checkbox.FontSize, 1.f, 128.f, _S("%0.fpx"))) {
+			if (elements::SliderFloat("Text Size", &gProjectSystem->data.checkbox.FontSize, 1.f, 128.f, "%0.fpx")) {
 				gProjectSystem->data.checkbox.Font = nullptr;
 				gProjectSystem->data.checkbox._shouldRebuild = true;
 			}
@@ -211,7 +210,7 @@ void CheckboxSettings::Mainbar()
 		elements::Child("Layer Selection", { 290, 70 }, [&]() {
 			ImGui::PushItemWidth(280);
 			const char* check[] = { "Background", "Active", "Inactive" };
-			ImGui::Combo(_S("Layer Type"), &gContext.CheckboxLayer, check, 3);
+			ImGui::Combo("Layer Type", &gContext.CheckboxLayer, check, 3);
 		});
 
 		if (gContext.CheckboxLayer == 0) {

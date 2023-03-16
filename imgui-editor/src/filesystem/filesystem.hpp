@@ -9,7 +9,6 @@
 #include "../installer/installerSystem.hpp"
 
 #include "../../defines.h"
-#include "../../dependencies/security/XorStr.hpp"
 #include "../../dependencies/modals/modals.hpp"
 #include "../../dependencies/notifies/notifies.h"
 

@@ -72,36 +72,36 @@ void LayerManagement::Edit(int index)
 
 	if (gProjectSystem->data.layers[index].type == drawType::Line)
 	{
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Start Position X"), &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Start Position Y"), &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size X"), &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size Y"), &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Start Position X", &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Start Position Y", &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size X", &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size Y", &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, "%0.f");
 			});
 
-		elements::Child(_S("Styles"), { 260, 118 }, [&]() {
+		elements::Child("Styles", { 260, 118 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::SliderFloat(_S("Thikness"), &gProjectSystem->data.layers[index].thickness, 1.f, 5.f, _S("%0.fpx"));
-			elements::Colorpicker(_S("Color"), gProjectSystem->data.layers[index].color);
+			elements::SliderFloat("Thikness", &gProjectSystem->data.layers[index].thickness, 1.f, 5.f, "%0.fpx");
+			elements::Colorpicker("Color", gProjectSystem->data.layers[index].color);
 			});
 	}
 	else if (gProjectSystem->data.layers[index].type == drawType::Rectangle)
 	{
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Start Position X"), &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Start Position Y"), &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size X"), &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size Y"), &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Start Position X", &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Start Position Y", &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size X", &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size Y", &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, "%0.f");
 			});
 
-		elements::Child(_S("Styles"), { 260, 212 }, [&]() {
+		elements::Child("Styles", { 260, 212 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::SliderFloat(_S("Thikness"), &gProjectSystem->data.layers[index].thickness, 1.f, 5.f, _S("%0.fpx"));
-			elements::SliderFloat(_S("Rounding"), &gProjectSystem->data.layers[index].rounding, 0.f, 24.f, _S("%0.fpx"));
+			elements::SliderFloat("Thikness", &gProjectSystem->data.layers[index].thickness, 1.f, 5.f, "%0.fpx");
+			elements::SliderFloat("Rounding", &gProjectSystem->data.layers[index].rounding, 0.f, 24.f, "%0.fpx");
 
-			if (ImGui::Combo(_S("Round Corners"), &gProjectSystem->data.layers[index]._round, roundingTypes, 10)) {
+			if (ImGui::Combo("Round Corners", &gProjectSystem->data.layers[index]._round, roundingTypes, 10)) {
 				if (gProjectSystem->data.layers[index]._round == 0) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_None;
 				if (gProjectSystem->data.layers[index]._round == 1) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_TopLeft;
 				if (gProjectSystem->data.layers[index]._round == 2) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_TopRight;
@@ -113,39 +113,39 @@ void LayerManagement::Edit(int index)
 				if (gProjectSystem->data.layers[index]._round == 8) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_Left;
 				if (gProjectSystem->data.layers[index]._round == 9) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_Right;
 			}
-			elements::Colorpicker(_S("Color"), gProjectSystem->data.layers[index].color);
+			elements::Colorpicker("Color", gProjectSystem->data.layers[index].color);
 			});
 	}
 	else if (gProjectSystem->data.layers[index].type == drawType::Circle || gProjectSystem->data.layers[index].type == drawType::CircleFilled)
 	{
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Start Position X"), &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Start Position Y"), &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size X"), &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size Y"), &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Start Position X", &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Start Position Y", &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size X", &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size Y", &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, "%0.f");
 			});
 
-		elements::Child(_S("Styles"), { 260, 140 }, [&]() {
-			elements::Colorpicker(_S("Color"), gProjectSystem->data.layers[index].color);
+		elements::Child("Styles", { 260, 140 }, [&]() {
+			elements::Colorpicker("Color", gProjectSystem->data.layers[index].color);
 			if(gProjectSystem->data.layers[index].type == drawType::Circle)
-				elements::SliderFloat(_S("Thikness"), &gProjectSystem->data.layers[index].thickness, 1.f, 5.f, _S("%0.fpx"));
+				elements::SliderFloat("Thikness", &gProjectSystem->data.layers[index].thickness, 1.f, 5.f, "%0.fpx");
 		});
 	}
 	else if (gProjectSystem->data.layers[index].type == drawType::RectangleFilled)
 	{
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Start Position X"), &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Start Position Y"), &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size X"), &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size Y"), &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Start Position X", &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Start Position Y", &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size X", &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size Y", &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, "%0.f");
 			});
 
-		elements::Child(_S("Styles"), { 260, 162 }, [&]() {
+		elements::Child("Styles", { 260, 162 }, [&]() {
 			ImGui::PushItemWidth(250);
-			ImGui::SliderFloat(_S("Rounding"), &gProjectSystem->data.layers[index].rounding, 0.f, 24.f, _S("%0.fpx"));
-			if (ImGui::Combo(_S("Round Corners"), &gProjectSystem->data.layers[index]._round, roundingTypes, 10)) {
+			ImGui::SliderFloat("Rounding", &gProjectSystem->data.layers[index].rounding, 0.f, 24.f, "%0.fpx");
+			if (ImGui::Combo("Round Corners", &gProjectSystem->data.layers[index]._round, roundingTypes, 10)) {
 				if (gProjectSystem->data.layers[index]._round == 0) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_None;
 				if (gProjectSystem->data.layers[index]._round == 1) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_TopLeft;
 				if (gProjectSystem->data.layers[index]._round == 2) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_TopRight;
@@ -158,17 +158,17 @@ void LayerManagement::Edit(int index)
 				if (gProjectSystem->data.layers[index]._round == 9) gProjectSystem->data.layers[index].roundFlags = ImDrawCornerFlags_Right;
 			}
 
-			elements::Colorpicker(_S("Color"), gProjectSystem->data.layers[index].color);
+			elements::Colorpicker("Color", gProjectSystem->data.layers[index].color);
 			});
 	}
 	else if (gProjectSystem->data.layers[index].type == drawType::Image)
 	{
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Start Position X"), &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Start Position Y"), &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size X"), &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size Y"), &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Start Position X", &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Start Position Y", &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size X", &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size Y", &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, "%0.f");
 			});
 	}
 	else if (gProjectSystem->data.layers[index].type == drawType::Text)
@@ -178,21 +178,21 @@ void LayerManagement::Edit(int index)
 			gProjectSystem->data.layers[index].size.x, gProjectSystem->data.layers[index].textValue.c_str()
 		);
 
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
-			elements::InputFloat(_S("Start Position X"), &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Start Position Y"), &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size X"), &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, _S("%0.f"));
-			elements::InputFloat(_S("Size Y"), &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, _S("%0.f"));
+			elements::InputFloat("Start Position X", &gProjectSystem->data.layers[index].pos.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Start Position Y", &gProjectSystem->data.layers[index].pos.y, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size X", &gProjectSystem->data.layers[index].size.x, 0.f, 0.f, "%0.f");
+			elements::InputFloat("Size Y", &gProjectSystem->data.layers[index].size.y, 0.f, 0.f, "%0.f");
 			});
 
-		elements::Child(_S("Text"), { 260, 245 }, [&]() {
+		elements::Child("Text", { 260, 245 }, [&]() {
 			ImGui::PushItemWidth(250);
 
 			char text[256];
 			strcpy_s(text, gProjectSystem->data.layers[index].textValue.c_str());
 
-			if (ImGui::InputText(_S("Text"), text, 256)) {
+			if (ImGui::InputText("Text", text, 256)) {
 				gProjectSystem->data.layers[index].textValue = text;
 				gProjectSystem->data.layers[index].textSize = gProjectSystem->data.layers[index].font->CalcTextSizeA(
 					gProjectSystem->data.layers[index].fontSize, FLT_MAX, 0, gProjectSystem->data.layers[index].textValue.c_str()
@@ -200,7 +200,7 @@ void LayerManagement::Edit(int index)
 
 				gHistorySystem->RegisterHistoryItem();
 			}
-			if (ImGui::BeginCombo(_S("Font"), gProjectSystem->data.layers[index].fontName.c_str())) {
+			if (ImGui::BeginCombo("Font", gProjectSystem->data.layers[index].fontName.c_str())) {
 				for (auto item : gLayerSystem->systemFonts) {
 					if (ImGui::Selectable(item.name.c_str(), item.name == gProjectSystem->data.layers[index].fontName)) {
 						gProjectSystem->data.layers[index].fontName = item.name;
@@ -213,12 +213,12 @@ void LayerManagement::Edit(int index)
 				}
 				ImGui::EndCombo();
 			}
-			if (elements::SliderFloat(_S("Text Size"), &gProjectSystem->data.layers[index].fontSize, 1.f, 128.f, _S("%0.fpx"))) {
+			if (elements::SliderFloat("Text Size", &gProjectSystem->data.layers[index].fontSize, 1.f, 128.f, "%0.fpx")) {
 				gProjectSystem->data.layers[index].font = nullptr;
 				gProjectSystem->data.layers[index]._shouldRebuild = true;
 			}
 
-			elements::Colorpicker(_S("Color"), gProjectSystem->data.layers[index].color);
+			elements::Colorpicker("Color", gProjectSystem->data.layers[index].color);
 
 			ImGui::BeginGroup();
 			{

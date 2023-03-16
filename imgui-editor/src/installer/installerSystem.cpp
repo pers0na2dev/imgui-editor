@@ -34,7 +34,7 @@ void installerSystem::SetStyles()
 
 void installerSystem::GenerateDirectories()
 {
-	auto path = std::filesystem::path(_S("C:/imgui.tech"));
+	auto path = std::filesystem::path("C:/imgui.tech");
 
 	if (!std::filesystem::exists(path))
 		std::filesystem::create_directories(path);

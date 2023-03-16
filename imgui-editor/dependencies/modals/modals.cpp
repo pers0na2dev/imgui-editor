@@ -13,7 +13,7 @@ void modalManager::Instance()
 	if (!m_bShow)
 		return;
 
-	ImGui::Begin(_S("MODAL"), 0, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove);
+	ImGui::Begin("MODAL", 0, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove);
 	{
 		ImGui::SetWindowPos(ImVec2(0, 0));
 		ImGui::SetWindowSize(ImGui::GetIO().DisplaySize);
@@ -25,7 +25,7 @@ void modalManager::Instance()
 		draw->AddRectFilled(pos, pos + windowSize, ImColor(35, 35, 35, int(210)));
 
 		ImGui::SetCursorPos(ImVec2(windowSize / 2 - ImVec2((m_v2Size.x) / 2, (m_v2Size.y) / 2)));
-		ImGui::BeginChild(_S("MODAL_CONTENT"), ImVec2(m_v2Size.x, m_v2Size.y), false, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoDecoration);
+		ImGui::BeginChild("MODAL_CONTENT", ImVec2(m_v2Size.x, m_v2Size.y), false, ImGuiWindowFlags_NoBackground | ImGuiWindowFlags_NoDecoration);
 		{
 			auto pos_internal = ImGui::GetWindowPos();
 			auto draw_internal = ImGui::GetWindowDrawList();

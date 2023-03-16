@@ -12,7 +12,6 @@
 #include "../projects/projectSystem.hpp"
 
 #include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/security/XorStr.hpp"
 #include "../../dependencies/console/console.hpp"
 #include "../filesystem/filesystem.hpp"
 #include "homepage.hpp"
@@ -21,7 +20,7 @@ void interfaceSystem::Navigation()
 {
 	auto flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
 
-	ImGui::Begin(_S("Navigation"), 0, flags);
+	ImGui::Begin("Navigation", 0, flags);
 	{
 		ImGui::SetWindowPos({ 0, 0 });
 		ImGui::SetWindowSize({ 55, ImGui::GetIO().DisplaySize.y });
@@ -37,7 +36,7 @@ void interfaceSystem::Navigation()
 			elements::Tab("Homepage", (const char*)ICON_FA_COMPRESS_ALT, gContext.SelectedTab, -1);
 			if (ImGui::IsItemClicked()) 
 			{
-				if (gFileSystem->selectedProject != _S(""))
+				if (gFileSystem->selectedProject != "")
 					gFileSystem->SaveProject();
 			}
 
@@ -61,7 +60,7 @@ void interfaceSystem::Infobar()
 {
 	auto flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
 
-	ImGui::Begin(_S("Infobar"), 0, flags);
+	ImGui::Begin("Infobar", 0, flags);
 	{
 		ImGui::SetWindowPos({ 55, 0 });
 		ImGui::SetWindowSize({ ImGui::GetIO().DisplaySize.x - 55, 46});
@@ -83,7 +82,7 @@ void interfaceSystem::Mainbar()
 {
 	auto flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
 
-	ImGui::Begin(_S("Tools"), 0, flags);
+	ImGui::Begin("Tools", 0, flags);
 	{
 		ImGui::SetWindowPos({ 55, 46 });
 		ImGui::SetWindowSize({ 290, ImGui::GetIO().DisplaySize.y - 35 });
@@ -95,7 +94,7 @@ void interfaceSystem::Mainbar()
 
 		ImGui::SetCursorPos({ 0, 0 });
 		ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, {0, 0});
-		ImGui::BeginChild(_S("ToolbarChild"), { 290, ImGui::GetIO().DisplaySize.y - 35 });
+		ImGui::BeginChild("ToolbarChild", { 290, ImGui::GetIO().DisplaySize.y - 35 });
 		{
 			windowSettings->Mainbar();
 			checkboxSettings->Mainbar();
@@ -125,7 +124,7 @@ void interfaceSystem::Sidebar()
 
 	auto flags = ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize;
 
-	ImGui::Begin(_S("Edit Layer"), 0, flags);
+	ImGui::Begin("Edit Layer", 0, flags);
 	{
 		ImGui::SetWindowPos({ ImGui::GetIO().DisplaySize.x - 260, 46 });
 		ImGui::SetWindowSize({ 260, ImGui::GetIO().DisplaySize.y - 46 });
@@ -137,7 +136,7 @@ void interfaceSystem::Sidebar()
 
 		ImGui::SetCursorPos({ 0, 0 });
 		ImGui::PushStyleVar(ImGuiStyleVar_ItemSpacing, { 0, 0 });
-		ImGui::BeginChild(_S("ToolbarChild"), { 260, ImGui::GetIO().DisplaySize.y - 46 });
+		ImGui::BeginChild("ToolbarChild", { 260, ImGui::GetIO().DisplaySize.y - 46 });
 		{
 			windowSettings->Sidebar();
 			checkboxSettings->Sidebar();

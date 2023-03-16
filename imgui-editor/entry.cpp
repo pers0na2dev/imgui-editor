@@ -8,7 +8,6 @@
 #include "src/utils/workspaceKeybinds.hpp"
 #include "src/utils/utils.hpp"
 
-#include "dependencies/security/XorStr.hpp"
 #include "dependencies/console/console.hpp"
 #include "dependencies/notifies/notifies.h"
 
@@ -29,7 +28,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	std::thread([]() {
 		for (;;) 
 		{
-			if (gFileSystem->selectedProject != _S("") &&
+			if (gFileSystem->selectedProject != "" &&
 				gContext.SelectedTab != -1) 
 			{
 				gFileSystem->SaveProject();
@@ -41,7 +40,7 @@ INT WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR lpCmdLine,
 	WNDCLASSEX wc = { sizeof(wc), CS_CLASSDC, WndProc, 0L, 0L, GetModuleHandle(NULL), NULL, NULL, NULL, NULL, "imgui.tech", NULL };
 	::RegisterClassEx(&wc);
 
-	HWND hwnd = ::CreateWindow(wc.lpszClassName, _S("imgui.tech - open alpha - "PROJECT_VERSION), WS_OVERLAPPEDWINDOW, 100, 100, 1400, 900, NULL, NULL, wc.hInstance, NULL);
+	HWND hwnd = ::CreateWindow(wc.lpszClassName, "imgui.tech", WS_OVERLAPPEDWINDOW, 100, 100, 1400, 900, NULL, NULL, wc.hInstance, NULL);
 
 	if (!CreateDeviceD3D(hwnd))
 	{

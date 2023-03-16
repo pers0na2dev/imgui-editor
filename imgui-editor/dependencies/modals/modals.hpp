@@ -5,7 +5,6 @@
 #include "../imgui/imgui.h"
 #include "../imgui/imgui_internal.h"
 #include "../imgui/imgui_tweaker.hpp"
-#include "../security/XorStr.hpp"
 
 #include <string>
 #include <functional>

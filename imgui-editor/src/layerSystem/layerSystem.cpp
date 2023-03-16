@@ -3,7 +3,6 @@
 #include <process.h>
 #include "../../dependencies/imgui/imgui_impl_dx9.h"
 #include "../utils/utils.hpp"
-#include "../../dependencies/security/XorStr.hpp"
 
 void layerSystem::RegisterImage(std::string path) {
     layerStruct baseData;

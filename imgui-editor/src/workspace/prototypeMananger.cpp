@@ -9,7 +9,6 @@
 #include "../projects/projectSystem.hpp"
 
 #include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/security/XorStr.hpp"
 #include "../../dependencies/console/console.hpp"
 
 #include "prototypeItems.hpp"
@@ -75,7 +74,7 @@ void PrototypeManager::Render()
 
 	utils::PushSettings();
 
-	ImGui::Begin(_S("BaseWindow"), 0, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
+	ImGui::Begin("BaseWindow", 0, ImGuiWindowFlags_NoDecoration | ImGuiWindowFlags_NoBringToFrontOnFocus | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoResize);
 	{
 		auto pos = ImGui::GetWindowPos();
 		auto draw = ImGui::GetWindowDrawList();
@@ -109,19 +108,19 @@ void PrototypeManager::Infobar()
 	float zoom = gContext.WindowScale * 100.f;
 
 	ImGui::SetCursorPos({ 5, 5 });
-	if (elements::InvisibleInputFloat(_S("Zoom:"), _S("search"), zoom, "%0.f%%")) {
+	if (elements::InvisibleInputFloat("Zoom:", "search", zoom, "%0.f%%")) {
 		zoom = std::clamp(zoom, 25.f, 1000.f);
-		ImGui::FindWindowByName(_S("BaseWindow"))->FontWindowScale = zoom / 100.f;
+		ImGui::FindWindowByName("BaseWindow")->FontWindowScale = zoom / 100.f;
 	}
 
 	ImGui::SetCursorPos({ 110, 5 });
-	elements::InvisibleInputFloat(_S("Width:"), _S("second"), gProjectSystem->data.window.WindowSize.x, "%0.fpx");
+	elements::InvisibleInputFloat("Width:", "second", gProjectSystem->data.window.WindowSize.x, "%0.fpx");
 
 	ImGui::SetCursorPos({ 215, 5 });
-	elements::InvisibleInputFloat(_S("Height:"), _S("third"), gProjectSystem->data.window.WindowSize.y, "%0.fpx");
+	elements::InvisibleInputFloat("Height:", "third", gProjectSystem->data.window.WindowSize.y, "%0.fpx");
 
 	ImGui::SetCursorPos({ ImGui::GetIO().DisplaySize.x - 100, 5 });
-	if (elements::Save(_S("Save")))
+	if (elements::Save("Save"))
 		gFileSystem->SaveProject();
 }
 
@@ -133,19 +132,19 @@ void PrototypeManager::Sidebar()
 	if (currentEditor == nullptr)
 		return;
 
-	elements::Child(_S("Naming"), { 260, 85 }, [&]() {
+	elements::Child("Naming", { 260, 85 }, [&]() {
 		ImGui::PushItemWidth(250);
 
 		char text[256];
 		strcpy_s(text, currentEditor->name.c_str());
 
-		if (ImGui::InputText(_S("Text"), text, 256)) {
+		if (ImGui::InputText("Text", text, 256)) {
 			currentEditor->name = text;
 		}
 	});
 
 	if (currentEditor->type == elementType::CURSOR_POS) {
-		elements::Child(_S("Positions"), { 260, 205 }, [&]() {
+		elements::Child("Positions", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
 			elements::InputFloat("X", &currentEditor->cursorPos.x, 0.f, 0.f, "%0.f");
 			elements::InputFloat("Y", &currentEditor->cursorPos.y, 0.f, 0.f, "%0.f");
@@ -153,7 +152,7 @@ void PrototypeManager::Sidebar()
 	}
 
 	if (currentEditor->type == elementType::CHILD) {
-		elements::Child(_S("Sizing"), { 260, 205 }, [&]() {
+		elements::Child("Sizing", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
 			elements::InputFloat("X", &currentEditor->childSize.x, 0.f, 0.f, "%0.f");
 			elements::InputFloat("Y", &currentEditor->childSize.y, 0.f, 0.f, "%0.f");
@@ -161,14 +160,14 @@ void PrototypeManager::Sidebar()
 	}
 
 	if (currentEditor->type == elementType::SAMELINE) {
-		elements::Child(_S("Sizing"), { 260, 205 }, [&]() {
+		elements::Child("Sizing", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
 			elements::InputFloat("X", &currentEditor->fWidth, 0.f, 0.f, "%0.f");
 		});
 	}
 
 	if (currentEditor->type == elementType::BUTTON) {
-		elements::Child(_S("Sizing"), { 260, 205 }, [&]() {
+		elements::Child("Sizing", { 260, 205 }, [&]() {
 			ImGui::PushItemWidth(250);
 			elements::InputFloat("X", &currentEditor->btnSize.x, 0.f, 0.f, "%0.f");
 			elements::InputFloat("Y", &currentEditor->btnSize.y, 0.f, 0.f, "%0.f");
@@ -243,6 +242,6 @@ void PrototypeManager::Mainbar()
 	if (gContext.SelectedTab != 3)
 		return;
 
-	elements::WindowWidget(_S("BaseWindowElement"));
+	elements::WindowWidget("BaseWindowElement");
 	RenderWidgetsList(gPrototypeSystem->prototypes, 1);
 }

@@ -43,3 +43,5 @@ binary/imgui-editor.iobj
 *.log
 *.tlog
 *.pdb
+
+.vs/*
