@@ -1,8 +1,8 @@
 #include "installerSystem.hpp"
 
-#include "../../dependencies/assets/faprolight.hpp"
-#include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/assets/SFUIDisplay.hpp"
+#include "dependencies/assets/faprolight.hpp"
+#include "dependencies/assets/hashes.h"
+#include "dependencies/assets/SFUIDisplay.hpp"
 
 void installerSystem::SetStyles()
 {

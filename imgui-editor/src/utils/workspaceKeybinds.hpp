@@ -5,8 +5,8 @@
 #include "../context.hpp"
 #include "../layerSystem/layerSystem.hpp"
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include <imgui.h>
+#include <imgui_internal.h>
 
 class WorkspaceKeybinds {
 public:

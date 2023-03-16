@@ -1,0 +1,20 @@
+{
+    "$schema": "https://raw.githubusercontent.com/microsoft/vcpkg-tool/main/docs/vcpkg.schema.json",
+    "name": "imgui-editor",
+    "version-string": "0.0.1",
+    "builtin-baseline": "a3df696929b28195b0d7a477ba6cd16dba48fa52",
+    "dependencies": [
+        {
+            "name": "imgui",
+            "features": [
+                "dx9-binding",
+                "opengl3-binding"
+            ]
+        },
+        {
+            "name": "nlohmann-json"
+        }
+    ],
+    "features": {
+    }
+}

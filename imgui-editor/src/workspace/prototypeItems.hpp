@@ -1,7 +1,7 @@
 #pragma once
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include <imgui.h>
+#include <imgui_internal.h>
 
 namespace Prototypes 
 {
@@ -62,9 +62,8 @@ namespace Prototypes
         {
             if (fmt_start == fmt && fmt_end[0] == 0)
                 return "%d";
-            const char* tmp_format;
-            ImFormatStringToTempBuffer(&tmp_format, NULL, "%.*s%%d%s", (int)(fmt_start - fmt), fmt, fmt_end); // Honor leading and trailing decorations, but lose alignment/precision.
-            return tmp_format;
+            ImFormatString(GImGui->TempBuffer, IM_ARRAYSIZE(GImGui->TempBuffer), "%.*s%%d%s", (int)(fmt_start - fmt), fmt, fmt_end); // Honor leading and trailing decorations, but lose alignment/precision.
+            return GImGui->TempBuffer;
         }
         return fmt;
     }

@@ -7,8 +7,8 @@
 #include "../context.hpp"
 #include "../utils/utils.hpp"
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include <imgui.h>
+#include <imgui_internal.h>
 
 enum class elementType : int {
 	CURSOR_POS, SAMELINE,

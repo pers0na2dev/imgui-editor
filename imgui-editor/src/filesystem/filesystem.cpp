@@ -1,6 +1,6 @@
 #include "filesystem.hpp"
 
-#include "../../dependencies/console/console.hpp"
+#include "dependencies/console/console.hpp"
 #include "../context.hpp"
 
 #include <fstream>

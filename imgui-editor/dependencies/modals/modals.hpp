@@ -2,12 +2,13 @@
 
 #include <memory>
 
-#include "../imgui/imgui.h"
-#include "../imgui/imgui_internal.h"
-#include "../imgui/imgui_tweaker.hpp"
+#include <imgui.h>
+#include <imgui_internal.h>
 
 #include <string>
 #include <functional>
+
+#include "imgui/imgui_tweaker.hpp"
 
 class modalManager {
 public:

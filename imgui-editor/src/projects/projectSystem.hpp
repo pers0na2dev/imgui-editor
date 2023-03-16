@@ -3,10 +3,10 @@
 #include <memory>
 #include <vector>
 
-#include "../../dependencies/json/json.hpp"
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
-#include "../layerSystem/layerSystem.hpp"
+#include <nlohmann/json.hpp>
+#include <imgui.h>
+#include <imgui_internal.h>
+#include "layerSystem/layerSystem.hpp"
 
 struct WindowStruct
 {

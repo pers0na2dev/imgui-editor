@@ -8,9 +8,9 @@
 #include "../projects/projectSystem.hpp"
 #include "../installer/installerSystem.hpp"
 
-#include "../../defines.h"
-#include "../../dependencies/modals/modals.hpp"
-#include "../../dependencies/notifies/notifies.h"
+#include "defines.h"
+#include "dependencies/modals/modals.hpp"
+#include "dependencies/notifies/notifies.h"
 
 struct projectData {
 	std::string filename;

@@ -4,9 +4,9 @@
 #include <filesystem>
 #include <windows.h>
 
-#include "../../defines.h"
-#include "../../dependencies/console/console.hpp"
-#include "../../dependencies/imgui/imgui.h"
+#include "defines.h"
+#include "dependencies/console/console.hpp"
+#include <imgui.h>
 
 #include "../filesystem/filesystem.hpp"
 
