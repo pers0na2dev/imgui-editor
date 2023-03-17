@@ -105,7 +105,6 @@
     <ClCompile Include="dependencies\imgui\imgui_tables.cpp" />
     <ClCompile Include="dependencies\imgui\imgui_widgets.cpp" />
     <ClCompile Include="entry.cpp" />
-    <ClCompile Include="src\history\history.cpp" />
     <ClCompile Include="src\installer\installerSystem.cpp" />
     <ClCompile Include="src\interface\homepage.cpp" />
     <ClCompile Include="dependencies\modals\modals.cpp" />
@@ -123,7 +122,6 @@
   <ItemGroup>
     <ClInclude Include="defines.h" />
     <ClInclude Include="src\context.hpp" />
-    <ClInclude Include="src\history\history.hpp" />
     <ClInclude Include="src\interface\transformDrawlist.hpp" />
     <ClInclude Include="src\layerSystem\layerManagement.hpp" />
     <ClInclude Include="src\filesystem\filesystem.hpp" />
