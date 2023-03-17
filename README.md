@@ -111,6 +111,7 @@ Watch the changes in the '**[CHANGELOG.md](CHANGELOG.md)**' file.
 ---
 
 _Made with a lot of ❤️❤️ by **[@kaazedev](https://github.com/kaazedev)**_
+
 [contributors-shield]: https://img.shields.io/github/contributors/kaazedev/imgui-editor.svg?style=for-the-badge
 [contributors-url]: https://github.com/kaazedev/imgui-editor/graphs/contributors
 [forks-shield]: https://img.shields.io/github/forks/kaazedev/imgui-editor.svg?style=for-the-badge
