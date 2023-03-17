@@ -1,30 +1,22 @@
 ---
-name: Bug report
-about: Create a report to help us improve
-title: ''
-labels: ''
-assignees: ''
+name: "Bug report \U0001F41E"
+about: Create a bug report
+labels: bug
 
 ---
 
-**Describe the bug**
+## Describe the bug
 A clear and concise description of what the bug is.
 
-**To Reproduce**
-Steps to reproduce the behavior:
-1. Go to '...'
-2. Click on '....'
-3. Scroll down to '....'
-4. See error
+### Steps to reproduce
+Steps to reproduce the behavior.
 
-**Expected behavior**
+### Expected behavior
 A clear and concise description of what you expected to happen.
 
-**Screenshots**
-If applicable, add screenshots to help explain your problem.
+### Environment
+ - OS: [e.g. Arch Linux]
+ - Other details that you think may affect.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
-
-**Additional context**
+### Additional context
 Add any other context about the problem here.
