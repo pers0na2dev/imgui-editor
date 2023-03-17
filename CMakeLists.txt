@@ -9,6 +9,10 @@ if (POLICY CMP0141)
   set(CMAKE_MSVC_DEBUG_INFORMATION_FORMAT "$<IF:$<AND:$<C_COMPILER_ID:MSVC>,$<CXX_COMPILER_ID:MSVC>>,$<$<CONFIG:Debug,RelWithDebInfo>:EditAndContinue>,$<$<CONFIG:Debug,RelWithDebInfo>:ProgramDatabase>>")
 endif()
 
+# CMP0135
+# https://cmake.org/cmake/help/latest/policy/CMP0135.html
+cmake_policy(SET CMP0135 NEW)
+
 include(FetchContent)
 FetchContent_Declare(_project_options URL https://github.com/aminya/project_options/archive/refs/tags/v0.26.3.zip)
 FetchContent_MakeAvailable(_project_options)
