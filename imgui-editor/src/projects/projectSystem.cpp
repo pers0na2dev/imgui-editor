@@ -2,7 +2,7 @@
 
 #include "../projects/projectSystem.hpp"
 
-#include "../../dependencies/console/console.hpp"
+#include "dependencies/console/console.hpp"
 #include "../prototypeSystem/prototypeSystem.hpp"
 
 template <class T>

@@ -1,15 +1,15 @@
 #include "checkboxSettings.hpp"
-#include "../../utils/workspaceKeybinds.hpp"
+#include "utils/workspaceKeybinds.hpp"
 
-#include "../../utils/utils.hpp"
-#include "../../layerSystem/layerSystem.hpp"
-#include "../../layerSystem/layerManagement.hpp"
-#include "../../interface/interface.hpp"
-#include "../../interface/elements.hpp"
-#include "../../projects/projectSystem.hpp"
+#include "utils/utils.hpp"
+#include "layerSystem/layerSystem.hpp"
+#include "layerSystem/layerManagement.hpp"
+#include "interface/interface.hpp"
+#include "interface/elements.hpp"
+#include "projects/projectSystem.hpp"
 
-#include "dependencies/assets/hashes.h"
-#include "dependencies/console/console.hpp"
+#include "assets/hashes.h"
+#include "console/console.hpp"
 
 bool Checkbox(const char* label, bool* v)
 {

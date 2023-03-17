@@ -1,6 +1,6 @@
 #pragma once
 
-#include "../dependencies/imgui/imgui.h"
+#include <imgui.h>
 
 struct Context 
 {

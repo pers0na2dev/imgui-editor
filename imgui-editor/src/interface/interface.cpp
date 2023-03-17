@@ -11,8 +11,8 @@
 #include "../layerSystem/layerSystem.hpp"
 #include "../projects/projectSystem.hpp"
 
-#include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/console/console.hpp"
+#include "dependencies/assets/hashes.h"
+#include "dependencies/console/console.hpp"
 #include "../filesystem/filesystem.hpp"
 #include "homepage.hpp"
 

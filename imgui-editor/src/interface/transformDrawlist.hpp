@@ -1,10 +1,10 @@
 #pragma once
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include <imgui.h>
+#include <imgui_internal.h>
 
-#include "../projects/projectSystem.hpp"
-#include "../filesystem/filesystem.hpp"
+#include "projects/projectSystem.hpp"
+#include "filesystem/filesystem.hpp"
 
 namespace transformDrawlist {
 	inline currentProjectData parse(projectData project) {

@@ -1,15 +1,16 @@
 #pragma once
 
 #include <functional>
-#include "../prototypeSystem/prototypeSystem.hpp"
-#include "../layerSystem/layerSystem.hpp"
-#include "../filesystem/filesystem.hpp"
-#include "../history/history.hpp"
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
-#include "../../dependencies/imgui/imgui_tweaker.hpp"
-#include "../../dependencies/assets/hashes.h"
+#include <imgui.h>
+#include <imgui_internal.h>
+
+#include "prototypeSystem/prototypeSystem.hpp"
+#include "layerSystem/layerSystem.hpp"
+#include "filesystem/filesystem.hpp"
+#include "history/history.hpp"
+
+#include "assets/hashes.h"
 #include "transformDrawlist.hpp"
 
 namespace elements
@@ -372,7 +373,7 @@ namespace elements
 
 		ImGui::PushItemWidth(55);
 		ImGui::SetCursorPos(bb.Min + ImVec2(-10, 8));
-		bool ret = ImGui::InputFloat(inputName, &state, 0, 0, format, ImGuiInputTextFlags_Invisible);
+		bool ret = ImGui::InputFloat(inputName, &state, 0, 0, format, 0); //ImGuiInputTextFlags_Invisible
 
 		if (ret) gHistorySystem->RegisterHistoryItem();
 		return ret;
@@ -397,7 +398,7 @@ namespace elements
 
 		ImGui::PushItemWidth(55);
 		ImGui::SetCursorPos(bb.Min + ImVec2(-10, 8));
-		bool ret = ImGui::InputInt(inputName, &state, 0, 0, ImGuiInputTextFlags_Invisible);
+		bool ret = ImGui::InputInt(inputName, &state, 0, 0, 0); //ImGuiInputTextFlags_Invisible
 
 		if (ret) gHistorySystem->RegisterHistoryItem();
 		return ret;
@@ -426,10 +427,10 @@ namespace elements
 	}
 
 	__forceinline void DashedRect(ImDrawList* draw, ImVec2 start, ImVec2 end, ImColor col, float thikness) {
-		draw->AddLineDashed(start, ImVec2(end.x, start.y), col, thikness);
-		draw->AddLineDashed(start, ImVec2(start.x, end.y), col, thikness);
-		draw->AddLineDashed(ImVec2(end.x, start.y), ImVec2(end.x, end.y), col, thikness);
-		draw->AddLineDashed(ImVec2(start.x, end.y), ImVec2(end.x, end.y), col, thikness);
+		AddLineDashed(draw, start, ImVec2(end.x, start.y), col, thikness);
+		AddLineDashed(draw, start, ImVec2(start.x, end.y), col, thikness);
+		AddLineDashed(draw, ImVec2(end.x, start.y), ImVec2(end.x, end.y), col, thikness);
+		AddLineDashed(draw, ImVec2(start.x, end.y), ImVec2(end.x, end.y), col, thikness);
 	}
 
 	inline bool ColorPickerInternal(float col[4])

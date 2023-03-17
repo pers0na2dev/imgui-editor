@@ -327,7 +327,7 @@ void LayerManagement::AddLayer(drawTarget target, bool sideWorkspace)
 	{
 		if (gContext.SelectedEditor == 1)
 		{
-			ImGui::GetForegroundDrawList()->AddLineDashed(
+			AddLineDashed(ImGui::GetForegroundDrawList(),
 				gContext.RenderPos + gContext.ScaleM(layerData.pos),
 				gContext.RenderPos + ImGui::GetIO().MousePos - ImGui::GetWindowPos(),
 				ImColor(255, 255, 255), 1.f
@@ -343,7 +343,7 @@ void LayerManagement::AddLayer(drawTarget target, bool sideWorkspace)
 			else
 				radius = size.y / 2;
 
-			ImGui::GetForegroundDrawList()->AddCircleDashed(
+			AddCircleDashed(ImGui::GetForegroundDrawList(),
 				gContext.RenderPos + gContext.ScaleM(layerData.pos) + size / 2,
 				gContext.ScaleM(radius),
 				ImColor(255, 255, 255), 32

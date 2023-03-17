@@ -2,10 +2,10 @@
 
 #include <memory>
 
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include <imgui.h>
+#include <imgui_internal.h>
 
-#include "../context.hpp"
+#include "context.hpp"
 
 class WindowSettings
 {

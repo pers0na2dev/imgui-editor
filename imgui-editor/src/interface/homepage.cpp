@@ -7,9 +7,9 @@
 #include "../filesystem/filesystem.hpp"
 #include "../projects/projectSystem.hpp"
 
-#include "../../dependencies/assets/hashes.h"
-#include "../../dependencies/console/console.hpp"
-#include "../../dependencies/modals/modals.hpp"
+#include "dependencies/assets/hashes.h"
+#include "dependencies/console/console.hpp"
+#include "dependencies/modals/modals.hpp"
 
 void homepageSystem::Render()
 {
@@ -37,7 +37,7 @@ void homepageSystem::Render()
 		static char search[64];
 		ImGui::PushItemWidth(400);
 		ImGui::SetCursorPos(ImVec2(308, 13));
-		ImGui::InputTextWithHint("Search", "Find your project by name", search, 64, ImGuiInputTextFlags_Invisible);
+		ImGui::InputTextWithHint("Search", "Find your project by name", search, 64, 0); //ImGuiInputTextFlags_Invisible
 
 		ImGui::SetCursorPos({308, 64});
 		if (elements::Widget("New design file", "Design and prototype", (const char*)ICON_FA_FILE_PLUS, { 300, 50 })) {

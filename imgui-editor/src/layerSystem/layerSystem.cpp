@@ -1,8 +1,7 @@
 #include "layerSystem.hpp"
-#include <windows.h>
-#include <process.h>
-#include "../../dependencies/imgui/imgui_impl_dx9.h"
-#include "../utils/utils.hpp"
+
+#include "imgui/imgui_impl_dx9.h"
+#include "utils/utils.hpp"
 
 void layerSystem::RegisterImage(std::string path) {
     layerStruct baseData;

@@ -18,11 +18,11 @@
 #include <d3dx9.h>
 #pragma comment(lib, "d3dx9.lib")
 
-#include "../interface/interface.hpp"
-#include "../workspace/windowSettings.hpp"
-#include "../../dependencies/console/console.hpp"
-#include "../../dependencies/imgui/imgui.h"
-#include "../../dependencies/imgui/imgui_internal.h"
+#include "interface/interface.hpp"
+#include "workspace/windowSettings.hpp"
+#include "console/console.hpp"
+#include <imgui.h>
+#include <imgui_internal.h>
 
 enum class drawType : int 
 {

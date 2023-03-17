@@ -2,11 +2,12 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
-#include "dependencies/imgui/imgui.h"
-#include "dependencies/imgui/imgui_impl_dx9.h"
-#include "dependencies/imgui/imgui_impl_win32.h"
-#include "dependencies/console/console.hpp"
-#include "src/layerSystem/layerSystem.hpp"
+#include <imgui.h>
+#include <console/console.hpp>
+
+#include "imgui/imgui_impl_dx9.h"
+#include "imgui/imgui_impl_win32.h"
+#include "layerSystem/layerSystem.hpp"
 
 #include <filesystem>
 
