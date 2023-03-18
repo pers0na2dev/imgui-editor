@@ -77,12 +77,6 @@ To build an .exe file:
 go build -o codegen.exe
 ```
 
-## 📚 **Documentation**
-
-The documentation is available at [https://github.com/kaazedev/imgui-editor/docs](https://github.com/kaazedev/imgui-editor/docs).
-
----
-
 ## 🎉 Was the Project helpful? Help us raise these numbers up
 
 [![GitHub followers](https://img.shields.io/github/followers/kaazedev.svg?style=social)](https://github.com/kaazedev)
