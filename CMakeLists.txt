@@ -41,6 +41,11 @@ if (WIN32)
   endif()
 endif()
 
+if (MINGW)
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -municode")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -municode")
+endif()
+
 project_options(
   ENABLE_CACHE
   ${ENABLE_CPPCHECK}
