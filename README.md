@@ -40,7 +40,7 @@ The project is developing quite slowly due to my busy schedule in real life, so 
 
 This guide assumes you have already installed the prerequisites.
 
-1. Install [DirectX SDK]([www.microsoft.com/en-us/download/details.aspx?id=6812](https://www.microsoft.com/en-us/download/details.aspx?id=35))
+1. Install [DirectX SDK](https://www.microsoft.com/en-us/download/details.aspx?id=35)
 2. Clone the repo
    ```cmd
    git clone https://github.com/kaazedev/imgui-editor.git
