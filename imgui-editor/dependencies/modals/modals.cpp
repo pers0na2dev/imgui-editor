@@ -47,7 +47,7 @@ void modalManager::Instance()
 			) && ImGui::IsMouseClicked(0) && !ImGui::IsPopupOpen("", ImGuiPopupFlags_AnyPopupId))
 				m_bShow = false;
 		}
-		ImGui::End();
+		ImGui::EndChild();
 	}
 	ImGui::End();
 }
